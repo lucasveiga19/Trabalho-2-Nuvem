@@ -68,11 +68,12 @@ app.get('/soma', (req, res) => {
                 <h1>Somando Valores</h1>
                 <h2>Digite dois numeros para somar<h2>
               <form action="soma" method="post">
-                
+                <p>
                 <input type="number" name="a" value="10" />
-                <p>+</p>
+                +
                 <input type="number" name="b" value="20" />
                 <input type="submit" value="Submit"/>
+                </p>
               </form>
             </body>
         </html> 
@@ -91,6 +92,125 @@ function soma(a, b) {
   var bInt = parseInt(b);
   return aInt + bInt;
 }
+
+      //subtracao
+app.get('/subtracao', (req, res) => {
+  res.send(`
+           <!DOCTYPE html>
+           <html>
+            <head>
+                <meta charset="utf-8">
+            </head>
+            <body>
+                <h1>Subtraindo Valores</h1>
+                <h2>Digite dois numeros para subtrair<h2>
+              <form action="subtracao" method="post">
+                <p>
+                <input type="number" name="a" value="10" />
+                -
+                <input type="number" name="b" value="20" />
+                <input type="submit" value="Submit"/>
+                </p>
+              </form>
+            </body>
+        </html> 
+      `);
+});
+
+app.post('/subtracao', function (req, res) {
+  var body = req.body;
+  var resultado = subtracao(body.a, body.b);
+  
+  res.send(`O resultado da soma de ${body.a} e ${body.b} é ${resultado}`);
+});
+
+function subtracao(a, b) {
+  var aInt = parseInt(a);
+  var bInt = parseInt(b);
+  return aInt - bInt;
+}
+
+      //multiplicacao
+app.get('/multiplicacao', (req, res) => {
+  res.send(`
+           <!DOCTYPE html>
+           <html>
+            <head>
+                <meta charset="utf-8">
+            </head>
+            <body>
+                <h1>Multiplicação Valores</h1>
+                <h2>Digite dois numeros para multiplicar<h2>
+              <form action="multiplicacao" method="post">
+                <p>
+                <input type="number" name="a" value="10" />
+                *
+                <input type="number" name="b" value="20" />
+                <input type="submit" value="Submit"/>
+                </p>
+              </form>
+            </body>
+        </html> 
+      `);
+});
+
+app.post('/multiplicacao', function (req, res) {
+  var body = req.body;
+  var resultado = multiplicacao(body.a, body.b);
+  
+  res.send(`O resultado da multiplicação de ${body.a} e ${body.b} é ${resultado}`);
+});
+
+function multiplicacao(a, b) {
+  var aInt = parseInt(a);
+  var bInt = parseInt(b);
+  return aInt * bInt;
+}
+
+      //divisao
+app.get('/divisao', (req, res) => {
+  res.send(`
+           <!DOCTYPE html>
+           <html>
+            <head>
+                <meta charset="utf-8">
+            </head>
+            <body>
+                <h1>Divisão Valores</h1>
+                <h2>Digite dois numeros para dividir<h2>
+              <form action="divisao" method="post">
+                <p>
+                <input type="number" name="a" value="10" />
+                /
+                <input type="number" name="b" value="20" />
+                <input type="submit" value="Submit"/>
+                </p>
+              </form>
+            </body>
+        </html> 
+      `);
+});
+
+app.post('/divisao', function (req, res) {
+  var body = req.body;
+  var resultado = divisao(body.a, body.b);
+  
+  res.send(`O resultado da divisao de ${body.a} e ${body.b} é ${resultado}`);
+});
+
+function divisao(a, b) {
+  var aInt = parseInt(a);
+  var bInt = parseInt(b);
+  return aInt / bInt;
+}
+
+      //exponencial
+
+      //fibonnaci
+
+      //media
+
+      //raizquadrada
 
 app.listen(3000, () => {
   console.log('server started');
