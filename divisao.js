@@ -4,3 +4,4 @@ function divisao(A = required(), B = required()) {
 
 console.log(divisao(10, 2));
 console.log(divisao(5)); 
+
