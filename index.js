@@ -56,7 +56,7 @@ app.get('/', (req, res) => {
       `);
 });
 
-                  //soma
+        //soma
 app.get('/soma', (req, res) => {
   res.send(`
            <!DOCTYPE html>
@@ -205,12 +205,152 @@ function divisao(a, b) {
 }
 
       //exponencial
+app.get('/exponencial', (req, res) => {
+  res.send(`
+           <!DOCTYPE html>
+           <html>
+            <head>
+                <meta charset="utf-8">
+            </head>
+            <body>
+                <h1>Exponencial Valores</h1>
+                <h2>Digite dois numeros para o exponencial<h2>
+              <form action="exponencial" method="post">
+                <p>
+                <input type="number" name="a" value="10" />
+                **
+                <input type="number" name="b" value="20" />
+                <input type="submit" value="Submit"/>
+                </p>
+              </form>
+            </body>
+        </html> 
+      `);
+});
+
+app.post('/exponencial', function (req, res) {
+  var body = req.body;
+  var resultado = exponencial(body.a, body.b);
+  
+  res.send(`O resultado da Exponencial de ${body.a} e ${body.b} é ${resultado}`);
+});
+
+function exponencial(a, b) {
+  var aInt = parseInt(a);
+  var bInt = parseInt(b);
+  return aInt ** bInt;
+}
 
       //fibonnaci
+app.get('/fibonnaci', (req, res) => {
+  res.send(`
+           <!DOCTYPE html>
+           <html>
+            <head>
+                <meta charset="utf-8">
+            </head>
+            <body>
+                <h1>Fibonnaci Valor</h1>
+                <h2>Digite até que número quer ver a sequência de Fibonnaci<h2>
+              <form action="fibonnaci" method="post">
+                <p>
+                <input type="number" name="a" value="10" />
+                <input type="submit" value="Submit"/>
+                </p>
+              </form>
+            </body>
+        </html> 
+      `);
+});
+
+app.post('/fibonnaci', function (req, res) {
+  var body = req.body;
+  var resultado = fibonnaci(body.a);
+  
+  res.send(`O resultado do fibonnaci de ${body.a} é ${resultado}`);
+});
+
+function fibonnaci(a){
+  var fibonacci = [];
+  fibonacci[0] = 0;
+  fibonacci[1] = 1;
+  for (var i = 2; i < a; i++) {
+    fibonacci[i] = fibonacci[i - 2] + fibonacci[i - 1];
+  }
+  return fibonacci;
+}
 
       //media
+app.get('/media', (req, res) => {
+  res.send(`
+           <!DOCTYPE html>
+           <html>
+            <head>
+                <meta charset="utf-8">
+            </head>
+            <body>
+                <h1>Valores Média</h1>
+                <h2>Digite três numeros para ver sua média<h2>
+              <form action="media" method="post">
+                <p>
+                <input type="number" name="a" value="10" />
+                <input type="number" name="b" value="20" />
+                <input type="number" name="c" value="30" /> 
+                <input type="submit" value="Submit"/>
+                </p>
+              </form>
+            </body>
+        </html> 
+      `);
+});
 
-      //raizquadrada
+app.post('/media', function (req, res) {
+  var body = req.body;
+  var resultado = media(body.a, body.b, body.c);
+  
+  res.send(`O resultado da media de ${body.a} e ${body.b} e ${body.c} é ${resultado}`);
+});
+
+function media(a, b, c) {
+  var aInt = parseInt(a);
+  var bInt = parseInt(b);
+  var cInt = parseInt(c);
+  return (aInt + bInt + cInt)/3;
+}
+
+      //raiz
+app.get('/raiz', (req, res) => {
+  res.send(`
+           <!DOCTYPE html>
+           <html>
+            <head>
+                <meta charset="utf-8">
+            </head>
+            <body>
+                <h1>Raiz Valores</h1>
+                <h2>Digite um valor para saber sua raiz quadrada<h2>
+              <form action="raiz" method="post">
+                <p>
+                √
+                <input type="number" name="a" value="49" />
+                <input type="submit" value="Submit"/>
+                </p>
+              </form>
+            </body>
+        </html> 
+      `);
+});
+
+app.post('/raiz', function (req, res) {
+  var body = req.body;
+  var resultado = raiz(body.a);
+  
+  res.send(`O resultado da raiz quadrada de ${body.a} é ${resultado}`);
+});
+
+function raiz(a) {
+  return Math.sqrt(a);
+}
 
 app.listen(3000, () => {
   console.log('server started');
